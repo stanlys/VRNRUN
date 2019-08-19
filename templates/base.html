@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>VRNRUN Беговой клуб</title>
+    {% load staticfiles %}
+
+       <link href="{% static 'css/main.css' %}" rel="stylesheet">
+       <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+       <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+    <header class="main-header">
+    <div class="container">
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                    <!--<li><a href="/"><span class="link-text">Главная</span></a><li>-->
+                    <li><a href="#about-sec"><span class="link-text">О клубе</span></a></li>
+                    <li><a href="#rules-sec"><span class="link-text">Условия участия</span></a></li>
+                    <li><a href="#users"><span class="link-text">Участники</span></a></li>
+                    <li><a href="#result"><span class="link-text">События</span></a></li>
+                    <li><a href="#volunteer-sec"><span class="link-text">Статьи</span></a></li>
+                    <li><a href="#contacts-sec"><span class="link-text">Личный кабинет</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel rules-se" class="rules-se carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="users carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="{% static 'img/background5.jpg'%}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Запишитесь на тренировку</h1>
+              <p>Вторник 19:00, встреча у шлагбаума. Восстановительный бег, СБУ.</p>
+              <p><a class="btn btn-lg btn-primary" href="/add/" role="button">Записаться</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="{% static 'img/background5.jpg'%}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Запишитесь на тренировку</h1>
+              <p>Четверг 19:00, встреча у шлагбаума. Разминка, фартлек, СБУ.</p>
+              <p><a class="btn btn-lg btn-primary" href="/add/" role="button">Хочу</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="{% static 'img/background5.jpg'%}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Запишитесь на тренировку</h1>
+              <p>Воскресенье 9:00. Разминка с тренором X-Fit. Темповой кросс. СБУ и сиовые упражнения.</p>
+              <p><a class="btn btn-lg btn-primary" href="/add/" role="button">Уже записался</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Назад</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Вперед</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    {% block teacher %}
+    {% endblock %}
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider" id="volunteer-sec">
+      {% block post %}
+      {% endblock %}
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+        <div class="container">
+          <div class="row row-30">
+            <div class="col-md-4 col-xl-5">
+              <div class="pr-xl-4"><a class="brand" href="base.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                <p>We are an award-winning creative agency, dedicated to the best result in web design, promotion, business consulting, and marketing.</p>
+                <!-- Rights-->
+                <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h5>Contacts</h5>
+              <dl class="contact-list">
+                <dt>Address:</dt>
+                <dd>798 South Park Avenue, Jaipur, Raj</dd>
+              </dl>
+              <dl class="contact-list">
+                <dt>email:</dt>
+                <dd><a href="mailto:#">dkstudioin@gmail.com</a></dd>
+              </dl>
+              <dl class="contact-list">
+                <dt>phones:</dt>
+                <dd><a href="tel:#">+91 7568543012</a> <span>or</span> <a href="tel:#">+91 9571195353</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-4 col-xl-3">
+              <h5>Links</h5>
+              <ul class="nav-list">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Pricing</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row no-gutters social-container">
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+        </div>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+</div>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+{#    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>#}
+{#    <script src="dist/js/bootstrap.min.js"></script>#}
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+{#    <script src="assets/js/vendor/holder.min.js"></script>#}
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+{#    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>#}
+
+  </body>
+</html>
