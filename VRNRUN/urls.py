@@ -16,14 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from VRNRUN.views import index
-from trains.views import FormAddTrains,StaticTrains
+from trains.views import FormAddTrains,StaticTrains, FormChoicesDate
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('',index,name="Index"),
     path('admin/', admin.site.urls, name="Admin"),
-    path('add/',FormAddTrains, name="FormAddTrains"),
+    path('addv1/',FormChoicesDate, name="FormAddTrains"),
+    path('addv2/',FormAddTrains, name="FormAddTrains"),
     path('stat/',StaticTrains, name="Statistic")
 ]
 

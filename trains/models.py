@@ -18,15 +18,19 @@ class Trains(models.Model):
 #Журнал тренировок, заполняет администратор сайта
 # в дальнейшем попробуем автоматизировать заполнение по дням недели
 # тренировки будут проходить во вторник, четвер и воскресенье
+#1 - понедельник, 7 -воскресенье
 class TrainsLog(models.Model):
-    date = models.DateField(null=False,help_text='Дата проведения тренировки')
+    dayweek = ['Ближайщая','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье']
+    day = models.IntegerField(null=False,help_text='Дата проведения тренировки')
+    time = models.TimeField(help_text='Время проведения тренировки')
+    istrain = models.BooleanField(null=False,help_text='Будет ли в этот день тренировка')
     comment = models.CharField(max_length=100, help_text = "Коментарий к тренировке")
 
     def __str__(self):
-        return '{} - {}'.format(self.date.strftime('%Y-%m-%d'),self.comment[:20])
+        return '{} {} - {}'.format(self.dayweek[self.day],self.time,self.istrain)
 
     class Meta:
-        ordering = ["-date"]
+        ordering = ["-day"]
 
 #фактически записанные люди на тренировки
 # информация для статистики
@@ -35,7 +39,7 @@ class TrainsList(models.Model):
     unreguser = models.ForeignKey(UnRegUser, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '{} - {}'.format(self.trains_id.date,self.unreguser.second_name)
+        return '{} - {}'.format(str(self.trains_id.istrain), self.unreguser.second_name)
 
     class Meta:
         ordering = ["-trains_id"]
