@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from trains.forms import AddTrains,ChooseTrainDate
-from trains.models import Trains
+from trains.models import Trains,TrainsLog
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -12,7 +12,7 @@ def FormAddTrains(request):
         if form.is_valid():
             user1 = form.save()
             print('Поздравляем Вы записаны',user1)
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('/')
     else:
         form = AddTrains()
     return render(request,'add.html',{'form' :form})
@@ -30,9 +30,8 @@ def FormChoicesDate(request):
 
 
 def StaticTrains(request):
-    ppp = Trains.objects.filter(date__month=8)
-    print(ppp)
-    return HttpResponse(ppp, "Hello, world. You're at the poll index.")
+    ppp = TrainsLog.objects.filter(istrain=True)
+    return HttpResponse("Hello, world. You're at the poll index.")
 
 
 

@@ -24,8 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',index,name="Index"),
     path('admin/', admin.site.urls, name="Admin"),
-    path('addv1/',FormChoicesDate, name="FormAddTrains"),
-    path('addv2/',FormAddTrains, name="FormAddTrains"),
+    path('add/',FormAddTrains, name="FormAddTrains"),
     path('stat/',StaticTrains, name="Statistic")
 ]
 
