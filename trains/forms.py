@@ -47,7 +47,7 @@ def getdaytrain():
     return days
 
 def maketrainslist(d):
-    days = [(datetostr(i), '{} в {}'.format(datetostr(i),TrainsLog.GetTime(TrainsLog,i.isoweekday()))) for i in GetTrains(datetime.now(), datetime.now() + timedelta(d), getdaytrain())]
+    days = [(i, '{} в {}'.format(datetostr(i),TrainsLog.GetTime(TrainsLog,i.isoweekday()))) for i in GetTrains(datetime.now(), datetime.now() + timedelta(d), getdaytrain())]
     return days
 
 class AddTrains(forms.Form):
@@ -70,7 +70,6 @@ class AddTrains(forms.Form):
     date2 = forms.ChoiceField(choices=day)
     # date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'} ))
 
-
     def save(self):
         print('Save - AddTrains')
         print(self.cleaned_data)
@@ -85,6 +84,21 @@ class AddTrains(forms.Form):
         train = TrainsList(trainsday=self.cleaned_data['date2'],unreguser=user1)
         train.save()
 
+def listmonth():
+    rusmonth = ['Пустой',
+                'Январь',
+                'Февраль',
+                'Март',
+                'Апрель',
+                'Май',
+                'Июнь',
+                'Июль',
+                'Август',
+                'Сентябрь',
+                'Октябрь',
+                'Ноябрь',
+                'Декабрь']
+    return [(i,rusmonth[i]) for i in range(1,13)]
 
 class ChooseTrainDate(forms.Form):
 
@@ -92,16 +106,14 @@ class ChooseTrainDate(forms.Form):
         super(ChooseTrainDate, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
-        self.helper.form_method = 'POST'
+        self.helper.form_method = 'GET'
         self.helper.help_text_inline = True
         self.helper.html5_required = True
         self.helper.label_class = 'col-sm-2'
         self.helper.field_class = 'col-sm-4'
         self.helper.add_input(Submit('send_button', u'Далее'))
 
-    ppp = TrainsLog.objects.filter(istrain=True)
-    print(ppp)
-    date = forms.IntegerField()
+    date = forms.ChoiceField(choices=listmonth(),label='Статистика за ...')
 
     def save(self):
         print('Save - ChooseTrainDate')

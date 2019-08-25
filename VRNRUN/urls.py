@@ -25,11 +25,12 @@ urlpatterns = [
     path('',index,name="Index"),
     path('admin/', admin.site.urls, name="Admin"),
     path('add/',FormAddTrains, name="FormAddTrains"),
-    path('stat/',StaticTrains, name="Statistic")
+    path('stat/',FormChoicesDate, name="Statistic")
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

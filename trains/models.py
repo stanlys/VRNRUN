@@ -39,7 +39,7 @@ class TrainsLog(models.Model):
 #фактически записанные люди на тренировки
 # информация для статистики
 class TrainsList(models.Model):
-    trainsday = models.CharField(max_length=20, help_text='Дата тренировки')
+    trainsday = models.DateField(help_text='Дата тренировки')
     unreguser = models.ForeignKey(UnRegUser, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -47,3 +47,14 @@ class TrainsList(models.Model):
 
     class Meta:
         ordering = ["-trainsday"]
+
+
+#список тренеров и администрации
+class Trener(models.Model):
+    FIO = models.CharField(max_length=50,help_text='ФИО отвественного человека')
+    description = models.TextField(help_text='Описание обязанностей')
+    isshow = models.BooleanField(help_text='Показывать на главной странице')
+    image= models.ImageField(verbose_name='Изображение',help_text='Фотография')
+
+    def __str__(self):
+        return "{} {}".format(self.FIO,str(self.isshow))
