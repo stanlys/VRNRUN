@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'user',
-    'trains.apps.TrainsConfig'
+    'trains.apps.TrainsConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -71,6 +76,20 @@ TEMPLATES = [
         },
     },
 ]
+
+# 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+print(TEMPLATES)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.load_template_source',
+    'django.template.loaders.app_directories.load_template_source',
+#     'django.template.loaders.eggs.load_template_source',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'VRNRUN.wsgi.application'
 
@@ -118,6 +137,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -132,5 +153,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-# print(os.path.join(BASE_DIR, 'static'))
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+EMAIL_BACKEND = 'django.core.email.backends.console.EmailBackends'
 

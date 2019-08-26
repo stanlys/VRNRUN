@@ -31,13 +31,6 @@ def FormChoicesDate(request):
 
 def StaticTrains(request):
     TrainsList.objects.filter(id=1).delete()
-    # ppp = TrainsList.objects.filter(trainsday__month=8)
-    # ppp = TrainsLog.objects.filter(istrain=True)
     return HttpResponse( "Hello, world. {} You're at the poll index.".format(TrainsList.objects.all().count()))
-
-def TrenerList(request):
-    TEMPLATE_PREVIEW = 'treners.html'
-    form = Trener.objects.filter(isshow=True)
-    return render(request,TEMPLATE_PREVIEW,{'form': form})
 
 

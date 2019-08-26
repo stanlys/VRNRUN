@@ -19,10 +19,12 @@ from VRNRUN.views import index
 from trains.views import FormAddTrains,StaticTrains, FormChoicesDate
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import include, path
 
 
 urlpatterns = [
     path('',index,name="Index"),
+    path('accounts/',include('allauth.urls'),name='Account'),
     path('admin/', admin.site.urls, name="Admin"),
     path('add/',FormAddTrains, name="FormAddTrains"),
     path('stat/',FormChoicesDate, name="Statistic")

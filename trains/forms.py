@@ -67,8 +67,7 @@ class AddTrains(forms.Form):
     phone = forms.CharField(label='Номер телефона')
     email = forms.EmailField(label='Ваш e-mail')
     day = maketrainslist(15)
-    date2 = forms.ChoiceField(choices=day)
-    # date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'} ))
+    date2 = forms.ChoiceField(choices=day, label='Дата тренировки')
 
     def save(self):
         print('Save - AddTrains')
@@ -117,7 +116,6 @@ class ChooseTrainDate(forms.Form):
 
     def save(self):
         print('Save - ChooseTrainDate')
-
 
 class IWANTRUN(forms.Form):
     pass

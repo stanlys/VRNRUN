@@ -30,7 +30,7 @@
                     <li><a href="#users"><span class="link-text">Участники</span></a></li>
                     <li><a href="#result"><span class="link-text">События</span></a></li>
                     <li><a href="#volunteer-sec"><span class="link-text">Статьи</span></a></li>
-                    <li><a href="#contacts-sec"><span class="link-text">Личный кабинет</span></a></li>
+                    <li><a href="{{ LOGIN_URL }}"><span class="link-text">Личный кабинет</span></a></li>
             </ul>
         </nav>
     </div>
@@ -87,6 +87,8 @@
       </a>
     </div><!-- /.carousel -->
 
+    {% block content %}
+    {% endblock %}
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -153,9 +155,20 @@
           <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
           <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
         </div>
+    <div>
+      <strong>Menu:</strong>
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        {% else %}
+        <li><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
       </footer>
 
-    </div><!-- /.container -->
 
 
 </div>
